@@ -22,7 +22,26 @@ export const productSlice = createSlice({
             count: 0
         }
     ],
-    reducers: {}
+    reducers: {
+        plusCount: (state,action) => {
+            state.filter((item) => {
+                if(item.name === action.payload.name) {
+                    item.count += 1
+                    console.log(item.name)
+                }
+            })
+        },
+        minusCount: (state,action) => {
+            state.filter((item) => {
+                if(item.name === action.payload.name) {
+                    item.count -= 1
+                    console.log(item.name)
+                }
+            })
+        }
+    }
 })
+
+export const { plusCount,minusCount } = productSlice.actions;
 
 export default productSlice.reducer;

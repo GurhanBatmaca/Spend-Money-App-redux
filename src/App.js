@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Products from './components/Products';
 
@@ -10,8 +11,9 @@ function App() {
     <div className="App">
       <div className='container'>
 
-      <Header />
-      <Products />
+        <Header />
+        <Products />
+        <Footer />
       </div>
     </div>
   );
