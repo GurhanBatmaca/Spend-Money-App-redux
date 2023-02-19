@@ -1,23 +1,26 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { buy,sell } from '../redux/slices/moneySlice';
-import productsData from '../data/productsData.json'
 
 const Products = () => {
+    const products = useSelector(state => state.product);
     const dispatch = useDispatch();
+
   return (
-    <div>
+    <div className='row products'>
         {
-            productsData.map((product,index) => (
-                <div key={index}>
-                    <div>
-                        <p>{product.name}</p>
-                        <p>{product.price}</p>
-                        <p>{product.img}</p>
+            products.map((product,index) => (
+                <div className='col-md-4' key={index}>
+                    <div className='product'>
+                        <div className='text-center'>{product.img}</div>
+                        <div className='text-center'>{product.name}</div>
+                        <div className='text-center'>{product.price}₺</div>
                     </div>
-                    <div>
-                        <button onClick={() => {dispatch(sell(1))}}>Sell</button>
-                        <input  type={"number"}></input>
-                        <button onClick={() => {dispatch(buy(1))}}>Buy</button>
+                    <div className='p-3'>
+                        <div className='d-flex justify-content-between inputs'>
+                            <button className={`btn btn-danger ${product.count > 0 ? "active" : ""}`} onClick={() => {dispatch(sell(product.price))}}>Sell</button>
+                            <input className='text-center'  type={"number"}></input>
+                            <button className={`btn btn-success ${product.count > 0 ? "active" : ""}`} onClick={() => {dispatch(buy(product.price))}}>Buy</button>
+                        </div>
                     </div>
                 </div>
             ))
@@ -26,4 +29,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default Products;
