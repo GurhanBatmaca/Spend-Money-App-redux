@@ -15,7 +15,7 @@ const Products = () => {
                         <div className='product bg-white'>
                             <div><img src={`${product.img}`}/></div>
                             <div className='text-center'>{product.name}</div>
-                            <div className='text-center'>{product.price}₺</div>
+                            <div className='text-center'>{(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₺</div>
                         </div>
                         <div className='p-3 bg-white'>
                             <div className='d-flex justify-content-between inputs'>
