@@ -1,29 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { products } from "../../data/products";
 
 export const productSlice = createSlice({
     name: "product",
-    initialState: [
-        {
-            name: "Hamburger",
-            price: 10,
-            img: "img",
-            count: 0
-        },
-        {
-            name: "Cola",
-            price: 20,
-            img: "img",
-            count: 0
-        },
-        {
-            name: "Mercedes",
-            price: 100000,
-            img: "img",
-            count: 0
-        }
-    ],
+    initialState: products,
     reducers: {
-        plusCount: (state,action) => {
+        increment: (state,action) => {
             state.filter((item) => {
                 if(item.name === action.payload.name) {
                     item.count += 1
@@ -31,7 +13,7 @@ export const productSlice = createSlice({
                 }
             })
         },
-        minusCount: (state,action) => {
+        decrement: (state,action) => {
             state.filter((item) => {
                 if(item.name === action.payload.name) {
                     item.count -= 1
@@ -42,6 +24,6 @@ export const productSlice = createSlice({
     }
 })
 
-export const { plusCount,minusCount } = productSlice.actions;
+export const { increment,decrement } = productSlice.actions;
 
 export default productSlice.reducer;

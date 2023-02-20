@@ -11,3 +11,18 @@
 .products .product .inputs input{
   width: 100%;
 }
+
+.products .product .inputs{
+  width: 100%;
+}
+
+.products .product img{
+  width: 100%;
+  height: 12rem;
+}
+
+.money-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}

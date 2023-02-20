@@ -5,10 +5,10 @@ const Header = () => {
     
   return (
     <div className='header text-center'>
-        <div>
+        <div className='p-4 bg-white'>
             <h2>Spend Money</h2>
         </div>
-        <h1>{total_money}</h1>
+        <h1 className='p-4 bg-success sticky-sm-top'>{total_money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₺</h1>
     </div>
   )
 }

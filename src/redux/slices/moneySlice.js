@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { minusCount, plusCount } from "./productSlice";
-
+import { increment, decrement } from "./productSlice";
 
 export const moneySlice = createSlice({
     name: "money",
@@ -8,24 +7,14 @@ export const moneySlice = createSlice({
         total_money: 100000000000
     },
     reducers: {
-        buy: (state,action) => {
-            // state.total_money -=  action.payload.price;
-            // console.log(action.payload.count);
 
-            
-        },
-        sell: (state,action) => {
-            // state.total_money += action.payload.price;
-            // console.log(action.payload.count);
-
-        }
     },
     extraReducers: (builder) => {
-        builder.addCase(plusCount, (state,action) => {
+        builder.addCase(increment, (state,action) => {
             state.total_money -= action.payload.price;
         })
-        builder.addCase(minusCount, (state,action) => {
-            state.total_money -= action.payload.price;
+        builder.addCase(decrement, (state,action) => {
+            state.total_money += action.payload.price;
         })
     }
 })
