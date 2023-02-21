@@ -8,21 +8,15 @@
   background-color: gainsboro;
 }
 
-.products .product .inputs input{
-  width: 100%;
+.products .product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.products .product .inputs{
-  width: 100%;
-}
-
-.products .product img{
-  width: 100%;
+.products .product .product-img img {
   height: 12rem;
+  width: 100%;
 }
 
-/* .money-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-} */
+

@@ -10,10 +10,13 @@ function App() {
   return (
     <div className="App">
       <div className='container'>
+      {/* <div className='sdeneme'>deneme</div> */}
 
         <Header />
-        <Products />
-        <Footer />
+        <div>
+          <Products />
+          <Footer />
+        </div>
       </div>
     </div>
   );
