@@ -6,18 +6,9 @@ const Products = () => {
     const total_money = useSelector(state => state.money.total_money);
     const dispatch = useDispatch();
 
-    const handInput = (e) => {
-        if(e !== NaN  || e > 0) {
-            console.log("nan");
-        } else {
-            console.log("doğru");
-        }
-        
-    }
-
   return (
     <div className='row products mb-3'>
-        <h1 className='p-4 bg-success sticky-sm-top text-center'>{total_money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₺</h1>
+        <h1 className='p-4 bg-success sticky-top text-center'>${total_money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}</h1>
         {
             products.map((product,index) => (
                 <div className='col-md-4' key={index}>
@@ -25,7 +16,7 @@ const Products = () => {
                         <div className='product bg-white'>
                             <div className='product-img p-2'><img src={`${product.img}`}/></div>
                             <div className='text-center'>{product.name}</div>
-                            <div className='text-center'>{(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₺</div>
+                            <div className='text-center'>${(product.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}</div>
                         </div>
                         <div className='p-3 bg-white'>
                             <div className='inputs row'>
@@ -35,8 +26,9 @@ const Products = () => {
                                     Sell
                                 </button>
                                 <input
-                                    onChange={(e) => {if(e.target.value !== NaN  && e.target.value > 0) {{dispatch(increment({price:(product.price *e.target.value) ,name: product.name}))}}}}
-
+                                    onChange={(e) => {
+                                        if(e.target.value !== NaN  && e.target.value > 0) {
+                                            { dispatch(increment({price:product.price ,name: product.name, unit: e.target.value})) }  }}}
                                     disabled={total_money > product.price ? false : true}
                                     value={product.count} 
                                     className='text-center col-6'  

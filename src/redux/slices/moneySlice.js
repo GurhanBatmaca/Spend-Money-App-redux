@@ -6,12 +6,17 @@ export const moneySlice = createSlice({
     initialState: {
         total_money: 100000000000
     },
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(increment, (state,action) => {
-            state.total_money -= action.payload.price;
+            if(!action.payload.unit) {
+                state.total_money -= action.payload.price;
+            } else {
+                const total_spending = action.payload.price * action.payload.unit;
+                if(total_spending - state.total_money < 0) {
+                    state.total_money -= (action.payload.price*action.payload.unit);
+                } 
+            }
         })
         builder.addCase(decrement, (state,action) => {
             state.total_money += action.payload.price;

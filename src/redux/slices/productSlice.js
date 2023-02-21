@@ -8,16 +8,18 @@ export const productSlice = createSlice({
         increment: (state,action) => {
             state.filter((item) => {
                 if(item.name === action.payload.name) {
-                    item.count += 1
-                    console.log(item.name)
+                    if(!action.payload.unit) {
+                        item.count += 1;
+                    } else {
+                        item.count = action.payload.unit;
+                    }
                 }
             })
         },
         decrement: (state,action) => {
             state.filter((item) => {
                 if(item.name === action.payload.name) {
-                    item.count -= 1
-                    console.log(item.name)
+                    item.count -= 1;
                 }
             })
         }
